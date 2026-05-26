@@ -1,126 +1,405 @@
 # FinAnalysis AI Chatbot
 
-An AI-powered financial analysis chatbot that pulls real data from SEC EDGAR and Yahoo Finance, calculates key financial ratios, and lets users ask natural language questions through a Streamlit web interface backed by Claude (Anthropic).
+AI-powered financial analysis platform that combines **real SEC filings, stock market data, financial ratio analysis, and LLM-powered reasoning** into an interactive chatbot experience.
 
----
-## Video Demo: 
-https://youtu.be/OK2bGdPo6vU
-
-
-https://github.com/user-attachments/assets/ae098892-2579-4e81-b0df-89a15e557b79
-
-
-## What It Does
-
-- Fetches 5 years of financial data directly from the **SEC EDGAR XBRL API** for 7 companies(and More!!)
-- Enriches the dataset with **historical stock prices and market data** via Yahoo Finance
-- Calculates **15+ financial ratios** including margins, ROE, ROA, CAGR, and valuation multiples
-- Provides a **Claude-powered chatbot** that answers natural language financial questions using tool calling
-- Renders **interactive charts** automatically based on the user's question
+The system pulls structured company financials from the **SEC EDGAR XBRL API**, enriches them with market data from **Yahoo Finance**, computes key financial metrics automatically, and enables users to ask natural-language financial questions through a Streamlit interface powered by **Anthropic Claude**.
 
 ---
 
-## Skills Demonstrated
 
-- REST API integration and JSON parsing 
-- Financial data wrangling with pandas
-- LLM tool use/function calling (Anthropic Claude)
-- Interactive data visualization (Plotly)
-- End-to-end application development (data → analysis → UI)
 
 ---
 
-## Companies Covered 
+# Overview
 
-Microsoft · Apple · Tesla · Meta · Amazon · Netflix · Alphabet (Google)
-You can add the companies that you are interested too! 
+FinAnalysis AI acts like a financial research assistant.
 
----
+Instead of manually reading SEC filings and calculating ratios, users can simply ask:
 
-## Tech Stack
+* “How profitable has Apple been over the past 5 years?”
+* “Compare Amazon and Microsoft by revenue growth”
+* “Is Tesla’s balance sheet improving?”
+* “Which company has the strongest margins?”
 
-| Layer | Tools |
-|---|---|
-| Data pipeline | SEC EDGAR XBRL API, `yfinance`, `pandas` |
-| LLM backend | Anthropic Claude API (tool use/function calling) |
-| Web UI | Streamlit, Plotly | google colab | or terminal-based
-| Environment | Python 3.10+, `python-dotenv` |
+The chatbot:
 
----
-
-## Key Features
-
-**Data pipeline** — `chatbot.py`
-- Pulls structured financial data (income statement, balance sheet, cash flow) from SEC EDGAR
-- Handles both duration and instant XBRL concepts
-- Merges with historical market data and computes all ratios automatically
-
-**Analysis layer** — 7 plain-text analysis functions covering snapshots, profitability, growth, balance sheet health, peer comparisons, and trend detection
-
-**Chatbot** — Claude selects the right analysis function via tool calling and returns a human-readable response with data-backed insights
-
-**Streamlit UI** — `streamlit_app.py`
-- Context-aware KPI cards that update based on the company being discussed
-- Charts auto-render alongside answers (revenue trends, margin lines, balance sheet breakdown, peer comparisons)
-- Conversation history with quick-action prompt buttons
+1. Retrieves structured financial data
+2. Performs financial analysis
+3. Selects the correct analysis tools/functions
+4. Generates insights using Claude
+5. Automatically renders charts and KPI visualizations
 
 ---
 
-## Setup
+# Core Capabilities
 
-**1. Clone or download the project**
+## Real Financial Data Pipeline
 
-**2. Create a virtual environment**
+The platform fetches:
+
+* Income statements
+* Balance sheets
+* Cash flow statements
+* Historical stock prices
+* Market capitalization data
+
+### Data Sources
+
+* SEC EDGAR XBRL API
+* Yahoo Finance (`yfinance`)
+
+---
+
+## Financial Ratio Engine
+
+Automatically calculates 15+ financial metrics including:
+
+### Profitability Metrics
+
+* Gross Margin
+* Operating Margin
+* Net Profit Margin
+* ROE (Return on Equity)
+* ROA (Return on Assets)
+
+### Growth Metrics
+
+* Revenue CAGR
+* Earnings Growth
+* Free Cash Flow Growth
+
+### Valuation Metrics
+
+* P/E Ratio
+* Price-to-Sales
+* Market Cap comparisons
+
+### Financial Health Metrics
+
+* Debt Ratios
+* Cash Position
+* Liquidity indicators
+
+---
+
+## Claude-Powered Financial Chatbot
+
+The chatbot uses:
+
+* Anthropic Claude API
+* Tool calling / function calling
+* Context-aware financial analysis
+
+Claude dynamically:
+
+* Understands the user’s financial question
+* Selects the appropriate analysis function
+* Retrieves structured financial insights
+* Generates human-readable explanations
+
+---
+
+## Interactive Analytics UI
+
+Built with Streamlit and Plotly.
+
+### Features
+
+* Interactive financial charts
+* Dynamic KPI cards
+* Revenue trend visualizations
+* Margin trend analysis
+* Peer comparison charts
+* Persistent conversation history
+* Quick-action prompts
+
+---
+
+# Supported Companies
+
+Currently configured for:
+
+* Microsoft
+* Apple
+* Tesla
+* Meta
+* Amazon
+* Netflix
+* Alphabet (Google)
+
+Additional companies can easily be added through ticker configuration.
+
+---
+
+# Architecture
+
+## 1. Data Layer
+
+Responsible for:
+
+* SEC API integration
+* XBRL parsing
+* Market data retrieval
+* Financial data normalization
+
+### Technologies
+
+* `requests`
+* `pandas`
+* `yfinance`
+
+---
+
+## 2. Analysis Layer
+
+Performs:
+
+* Financial ratio calculations
+* Trend analysis
+* Peer benchmarking
+* Profitability analysis
+* Balance sheet evaluation
+
+Includes multiple modular analysis functions.
+
+---
+
+## 3. LLM Layer
+
+Claude acts as the reasoning engine.
+
+### Responsibilities
+
+* Tool selection
+* Question interpretation
+* Financial insight generation
+* Contextual responses
+
+### AI Concepts Demonstrated
+
+* Function calling
+* Tool use
+* AI orchestration
+* Retrieval-based analysis
+* Structured reasoning
+
+---
+
+## 4. Frontend Layer
+
+Interactive web application built using:
+
+* Streamlit
+* Plotly
+
+Provides:
+
+* Real-time visual analytics
+* Conversational interface
+* Financial dashboards
+
+---
+
+# Tech Stack
+
+| Layer         | Technologies                    |
+| ------------- | ------------------------------- |
+| Backend       | Python                          |
+| Data Pipeline | SEC EDGAR API, yfinance, pandas |
+| AI/LLM        | Anthropic Claude API            |
+| Visualization | Plotly                          |
+| Frontend      | Streamlit                       |
+| Environment   | Python 3.10+, python-dotenv     |
+
+---
+
+# Machine Learning / AI Concepts Demonstrated
+
+This project showcases several modern AI engineering concepts:
+
+* LLM tool calling
+* AI-powered financial analysis
+* Retrieval-augmented reasoning
+* Structured financial data pipelines
+* Conversational analytics
+* Context-aware response generation
+* Function orchestration
+* Interactive AI systems
+
+---
+
+# Project Structure
+
+```bash
+FinAnalysis-AI/
+│
+├── chatbot.py               # Core chatbot + tool calling logic
+├── streamlit_app.py         # Streamlit web application
+├── analysis.py              # Financial analysis functions
+├── data_pipeline.py         # SEC + Yahoo Finance data pipeline
+├── requirements.txt
+├── .env
+└── README.md
+```
+
+---
+
+# Installation
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/your-username/FinAnalysis-AI.git
+cd FinAnalysis-AI
+```
+
+---
+
+## 2. Create Virtual Environment
+
+### Windows
+
 ```bash
 python -m venv .venv
-source .venv/bin/activate        # Mac / Linux
-.venv\Scripts\activate           # Windows
+.venv\Scripts\activate
 ```
 
-**3. Install dependencies**
+### Mac/Linux
+
 ```bash
-pip install anthropic requests pandas yfinance streamlit plotly python-dotenv
+python -m venv .venv
+source .venv/bin/activate
 ```
-or
-```
+
+---
+
+## 3. Install Dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-**4. Add your Anthropic API key**
+Or manually:
 
-Create a `.env` file in the project folder:
+```bash
+pip install anthropic requests pandas yfinance streamlit plotly python-dotenv
 ```
-ANTHROPIC_API_KEY=sk-ant-...
-```
-
-Get a key at [console.anthropic.com](https://console.anthropic.com)
 
 ---
 
-## Running the Web App
+## 4. Configure Environment Variables
 
-**Streamlit UI**
+Create a `.env` file:
+
+```env
+ANTHROPIC_API_KEY=your_api_key_here
 ```
+
+Get your API key from:
+
+[Anthropic Console](https://console.anthropic.com?utm_source=chatgpt.com)
+
+---
+
+# Running the Application
+
+## Streamlit Web App
+
+```bash
 streamlit run streamlit_app.py
 ```
-Then open [http://localhost:8501](http://localhost:8501)
 
-**Terminal chatbot**
+Open:
+
+```text
+http://localhost:8501
 ```
+
+---
+
+## Terminal Chatbot
+
+```bash
 python chatbot.py
 ```
 
 ---
 
+# Example Questions
 
-## Sample Questions
+### Company Analysis
 
-- *"Give me a snapshot of Netflix"*
-- *"How profitable has Apple been over the past 5 years?"*
-- *"Which company has the highest net profit margin?"*
-- *"How fast has Amazon grown its revenue?"*
-- *"Is Tesla's balance sheet improving?"*
-- *"Compare all companies by market cap"*
+* “Give me a snapshot of Netflix”
+* “Analyze Apple’s profitability”
+
+### Growth Analysis
+
+* “How fast has Amazon grown revenue?”
+* “Which company has the highest CAGR?”
+
+### Comparative Analysis
+
+* “Compare Microsoft and Google margins”
+* “Compare all companies by market cap”
+
+### Financial Health
+
+* “Is Tesla’s balance sheet improving?”
+* “Which company has the strongest cash position?”
 
 ---
+
+# Key Highlights
+
+## End-to-End AI System
+
+This project demonstrates the complete lifecycle of:
+
+* Data ingestion
+* Financial processing
+* AI reasoning
+* Visualization
+* Interactive deployment
+
+---
+
+## Real-World Financial Analytics
+
+Uses:
+
+* Real SEC filings
+* Real stock market data
+* Automated ratio analysis
+
+instead of static datasets.
+
+---
+
+## Modern LLM Engineering
+
+Implements:
+
+* Claude tool calling
+* Function orchestration
+* Context-aware conversational AI
+
+which are core modern GenAI engineering skills.
+
+---
+
+# Future Improvements
+
+Potential extensions include:
+
+* Multi-company portfolio analysis
+* RAG over SEC filings
+* Earnings call transcript analysis
+* Real-time stock tracking
+* AI-generated investment summaries
+* Agentic financial workflows
+* Multi-LLM support
+* Vector database integration
+
+---
+
 
